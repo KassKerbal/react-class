@@ -1,3 +1,9 @@
+# react-class
+
+Projecto para las clases de React de CoderHouse.
+
+Alumno: Bernardo Jorge Zulliger Pizarro
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
