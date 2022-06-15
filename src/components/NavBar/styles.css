@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+.navBar {
+    user-select: none;
+    width: 100%;
+    background-color: #e9e9e9;
+}
+
+.navBarTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #d6d6d6;
+    padding: 10px 0;
+}
+
+.navBarTopTitleContainer {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.navBarLogo {
+    display: flex;
+    justify-content: center;
+    width: 80px;
+}
+
+.navBarTitle {
+    font-size: 31px;
+    font-family: 'Pacifico', cursive;
+}
+
+.shoppingCartIcon {
+    width: 100px;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.navBarButtonWrap {
+    background-color: #e9e9e9;
+    padding: 4px 0;
+}
+
+
+.productTitle {
+    padding: 10px 0;
+}
+
+.listNavBar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navBarButtonWrap {
+    width: 100%;
+}
