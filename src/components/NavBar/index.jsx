@@ -3,7 +3,7 @@ import "./styles.css"
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import ParrotLogo from "../../assets/icons/ParrotLogo";
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import CartWidget from "../CartWidget";
 
 function NavBar () {
 
@@ -15,9 +15,8 @@ function NavBar () {
                     <div className="navBarTitle">Palitos para Alanna</div>
                 </div>
 
-                <div className="shoppingCartIcon">
-                    <ShoppingCartIcon fontSize="large"/>
-                </div>
+                <CartWidget/>
+
             </div>
             <div className="navBarButtonWrap">
                 <ButtonGroup orientation="horizontal" variant="text" aria-label="horizontal contained button group" >
