@@ -2,11 +2,11 @@ import React from "react";
 import "./styles.css"
 
 
-function ItemListContainer() {
+function ItemListContainer({elementContainer}) {
 
     return (
         <div className="itemListMain">
-                Elemento Contenedor
+                {elementContainer}
         </div>
     )
 }
