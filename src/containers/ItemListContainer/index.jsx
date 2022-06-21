@@ -31,9 +31,9 @@ function ItemListContainer({elementContainer, stock}) {
                 {elementContainer}
 
                     <div className="counterBoxWrap">
-                        <button className="buttonCounterBox" onClick={handlerAddition}><img src={addIcon}></img></button>
+                        <button className="buttonCounterBox" onClick={handlerAddition}><img alt="add" src={addIcon}></img></button>
                         <span>{counter}</span>
-                        <button className="buttonCounterBox" onClick={handlerSubtract}><img src={subsIcon}></img></button>
+                        <button className="buttonCounterBox" onClick={handlerSubtract}><img alt="subs" src={subsIcon}></img></button>
                     </div>
                 <div className="buttonAddCartWrap">
                     <button onClick={onAdd} disabled={isDisabled}>Agregar al carrito</button>
