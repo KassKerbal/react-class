@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles.css"
+import "./styles.scss"
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import ParrotLogo from "../../assets/icons/ParrotLogo";

@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App">
       <NavBar/>
-      <ItemListContainer elementContainer={"Element Container"}/>
+      <ItemListContainer elementContainer={"Palitos comestibles"}/>
     </div>
   );
 }
