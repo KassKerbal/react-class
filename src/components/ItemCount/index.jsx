@@ -1,17 +1,17 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import "./styles.scss"
 import addIcon from "../../assets/icons/add.png";
 import subsIcon from "../../assets/icons/minus.png";
 
-function ItemCount({stock, onAdd}) {
+function ItemCount({ stock, initial, onAdd }) {
 
-    const [counter, setCounter] = useState(0);
+    const [counter, setCounter] = useState(parseInt(initial));
 
     const handlerAddition = () => {
         if (counter < stock) setCounter(counter + 1);
     }
     const handlerSubtract = () => {
-        if (counter > 0) setCounter(counter - 1); 
+        if (counter > 0) setCounter(counter - 1);
     }
 
     return (

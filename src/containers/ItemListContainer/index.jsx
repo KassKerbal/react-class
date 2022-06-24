@@ -1,20 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./styles.scss"
-import ItemCount from "../../components/ItemCount";
+import ItemList from "../../components/ItemList";
 
-function ItemListContainer({elementContainer, stock}) {
+function ItemListContainer() {
 
-    stock = 10;
+    const [items, setItems] = useState(false)
 
-    const onAdd = (counter) => {
-        let numberOfStock = counter;
-        console.log(numberOfStock);
+    const getProducts = async () => {
+        try {
+            const response = await fetch('https://dummyjson.com/products?limit=10');
+            const getItems = await response.json();
+            setItems(getItems);
+        } catch (err) {
+            console.log(err);
+        }
     }
+
+    useEffect(() => {
+        getProducts();
+    }, []);
 
     return (
         <div className="itemListMain">
-                {elementContainer}
-                <ItemCount stock={stock} onAdd={onAdd}></ItemCount>
+            {items ? <ItemList items={items.products} /> : null}
         </div>
     )
 }
