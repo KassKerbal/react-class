@@ -1,30 +1,43 @@
 import React from "react";
-import "./styles.scss"
+import styles from "./styles.module.scss";
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import ParrotLogo from "../../assets/icons/ParrotLogo";
 import CartWidget from "../CartWidget";
+import { useNavigate } from 'react-router-dom';
 
-function NavBar () {
+function NavBar() {
+
+    const navigate = useNavigate();
+
+    const handleNavigate = (e) => {
+        navigate(e);
+    }
+
+    const categories = [
+        "smartphones",
+        "laptops",
+        "fragrances",
+        "groceries",
+        "furniture",
+    ]
+
+    const buttonCategories = categories.map((e, index) => <Button onClick={() => handleNavigate(`/category/${e}`)} key={index}>{e}</Button>)
 
     return (
-        <div className="navBar">
-            <div className="navBarTop">  
-                <div className="navBarTopTitleContainer">
-                    <div className="navBarLogo"><ParrotLogo width={'40px'} height={'40px'} /></div>
-                    <div className="navBarTitle">Palitos para Alanna</div>
+        <div className={styles.main}>
+            <div className={styles.topWrap}>
+                <div className={styles.logoContainer}>
+                    <div className={styles.clickContainer} onClick={() => handleNavigate('/')}>
+                        <div className={styles.logo}><ParrotLogo width={'40px'} height={'40px'} /></div>
+                        <div className={styles.title}>Palitos para Alanna</div>
+                    </div>
                 </div>
-
-                <CartWidget/>
-
+                <CartWidget />
             </div>
-            <div className="navBarButtonWrap">
+            <div className={styles.buttonWrap}>
                 <ButtonGroup orientation="horizontal" variant="text" aria-label="horizontal contained button group" >
-                    <Button>Juguetes Madera</Button>
-                    <Button>Juguetes Acero</Button>
-                    <Button>Jaulas</Button>
-                    <Button>Alimentación</Button>
-                    <Button>Otros</Button>
+                    {buttonCategories}
                 </ButtonGroup>
             </div>
         </div>

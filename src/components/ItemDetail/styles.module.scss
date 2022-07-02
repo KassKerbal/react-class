@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap');
 
-.itemDetailCardWrap {
-    width: 300px;
+.main {
+    display: flex;
+    width: 1000px;
     height: fit-content;
     background-color: rgb(236, 199, 156);
     border-radius: 30px;
@@ -11,28 +12,48 @@
     box-sizing: border-box;
 }
 
-.itemDetailImageContainer {
+.imageContainer {
+    display: flex;
+    align-items: center;
     img {
-        width: 200px;
-        height: 150px;
+        width: 400px;
+        height: 300px;
     }
 }
 
-.itemDetailCardTitle {
-    margin: 5px;
+.container {
+    margin-left: 20px;
+}
+
+.infoWrap {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title {
+    margin: 5px 0;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     font-size: 20px;
 }
 
-.itemDetailCardPrice {
+.price {
     margin-bottom: 14px;
     font-family: 'Rubik', sans-serif;
     font-weight: 500;
     font-size: 22px;
 }
 
-.itemDetailCardStock {
+.discountPercentage {
+    margin-bottom: 14px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #aa0000;
+}
+
+.stock {
     margin-bottom: 14px;
     font-family: 'Rubik', sans-serif;
     font-weight: 500;
@@ -40,8 +61,14 @@
     color: #0005aa;
 }
 
-.itemDetailCardDescription {
+.description {
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
     font-size: 16px;
+}
+
+.itemCountWrap {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap');
 
-.itemCardWrap {
+.main {
     width: 300px;
     height: fit-content;
     background-color: rgb(236, 199, 156);
@@ -10,56 +10,34 @@
     padding: 20px;
     box-sizing: border-box;
     transition-duration: 1s;
-}
-
-.itemCardOffFocus {
     cursor: pointer;
 }
 
-.itemImageContainer {
+.imageContainer {
+    display: flex;
+    justify-content: center;
     img {
         width: 200px;
         height: 150px;
     }
 }
 
-.itemCardTitle {
+.title {
     margin: 5px;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     font-size: 20px;
 }
 
-.itemCardPrice {
+.price {
     margin-bottom: 14px;
     font-family: 'Rubik', sans-serif;
     font-weight: 500;
     font-size: 22px;
 }
 
-.itemCardDescription {
+.description {
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
     font-size: 16px;
-}
-
-.itemCountDisable {
-    height: 0;
-    transition-duration: .3s;
-    .itemCountFade {
-        opacity: 0;
-    }
-}
-
-.itemCountWrap {
-    height: 120px;
-    transition-duration: .3s;
-    .itemCountFade {
-        opacity: 1;
-    }
-}
-
-.itemCountFade {
-    transition-delay: .2s;
-    transition-duration: .4s;
 }

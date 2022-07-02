@@ -1,24 +1,17 @@
-import React from 'react'
-import ItemCount from '../ItemCount';
-import "./styles.scss";
+import React from 'react';
+import styles from "./styles.module.scss";
 
-function Item({ item, onAdd, focus, onClickEvent }) {
+function Item({ item, onClickNavigate }) {
 
     return (
-        <div className={focus === item.id ? "itemCardWrap" : "itemCardWrap itemCardOffFocus"}  onClick={() => onClickEvent(item.id)}>
-            <div className='itemImageContainer'>
+        <div className={styles.main}  onClick={() => onClickNavigate(`/item/${item.id}`)}>
+            <div className={styles.imageContainer}>
                 <img src={item.images[0]} alt="product"/>
             </div>
-            <div className='itemInfoContainer'>
-                <div className='itemCardTitle'>{item.title}</div>
-                <div className='itemCardPrice'>{item.price} €</div>
-                <div className='itemCardDescription'>{item.description}</div>
-            </div>
-        
-            <div className={ focus === item.id ? "itemCountWrap" : "itemCountDisable"}>
-                <div className='itemCountFade'>
-                    { focus === item.id ? <ItemCount stock={item.stock} onAdd={onAdd} initial={1} /> : null }
-                </div>
+            <div className={styles.container}>
+                <div className={styles.title}>{item.title}</div>
+                <div className={styles.price}>{item.price} €</div>
+                <div className={styles.description}>{item.description}</div>
             </div>
         </div>
     )

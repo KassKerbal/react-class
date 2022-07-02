@@ -1,31 +1,40 @@
 import React, { useEffect, useState } from "react";
-import "./styles.scss"
+import styles from "./styles.module.scss";
 import ItemDetail from "../../components/ItemDetail";
+import { useParams } from 'react-router-dom';
 
-function ItemDetailContainer({idProduct}) {
+function ItemDetailContainer() {
 
-    const [itemDetail, setItemDetail] = useState(false)
+    const [itemDetail, setItemDetail] = useState([])
+    const params = useParams();
 
-    const getProducts = async () => {
-        try {
-            const response = await fetch(`https://dummyjson.com/products/${idProduct}`);
-            const getItem = await response.json();
-            setItemDetail(getItem);
-        } catch (err) {
-            console.log(err);
-        }
-    }
-
+    const onAdd = (counter) => {
+        let numberOfStock = counter;
+        console.log(numberOfStock);
+      }
+    
     useEffect(() => {
+        const getProducts = async () => {
+            try {
+                const response = await fetch(`https://dummyjson.com/products/${params.itemId}`);
+                const getItem = await response.json();
+                setItemDetail(getItem);
+            } catch (err) {
+                console.log(err);
+            }
+        }
         getProducts();
     }, []);
 
     return (
-        <div className="itemDetailContainerMain">
-            {itemDetail ? <ItemDetail item={itemDetail} /> : null}
+        <div className={styles.main}>
+            { itemDetail.length !== 0 ?
+                <ItemDetail item={itemDetail} onAdd={onAdd} /> 
+                :
+                <h1 className={styles.loader}>... Loading</h1>
+            }
         </div>
     )
 }
 
 export default ItemDetailContainer;
-

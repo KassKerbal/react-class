@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import "./styles.scss"
+import React, { useState } from 'react';
+import styles from "./styles.module.scss";
 import addIcon from "../../assets/icons/add.png";
 import subsIcon from "../../assets/icons/minus.png";
 
@@ -15,13 +15,13 @@ function ItemCount({ stock, initial, onAdd }) {
     }
 
     return (
-        <div className='itemCountMain'>
-            <div className="counterBoxWrap">
-                <button className="buttonCounterBox" onClick={handlerAddition}><img alt="add" src={addIcon}></img></button>
-                <span>{counter}</span>
-                <button className="buttonCounterBox" onClick={handlerSubtract}><img alt="subs" src={subsIcon}></img></button>
+        <div className={styles.main}>
+            <div className={styles.counterWrap}>
+                <button className={styles.buttonCounter} onClick={handlerAddition}><img alt="add" src={addIcon}></img></button>
+                <span className={styles.counterNumber}>{counter}</span>
+                <button className={styles.buttonCounter} onClick={handlerSubtract}><img alt="subs" src={subsIcon}></img></button>
             </div>
-            <div className="buttonAddCartWrap">
+            <div className={styles.buttonAdd}>
                 <button onClick={() => onAdd(counter)} disabled={counter <= 0}>Agregar al carrito</button>
             </div>
         </div>
