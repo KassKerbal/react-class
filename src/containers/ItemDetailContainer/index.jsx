@@ -5,14 +5,10 @@ import { useParams } from 'react-router-dom';
 
 function ItemDetailContainer() {
 
-    const [itemDetail, setItemDetail] = useState([])
+    const [itemDetail, setItemDetail] = useState({})
     const params = useParams();
 
-    const onAdd = (counter) => {
-        let numberOfStock = counter;
-        console.log(numberOfStock);
-      }
-    
+
     useEffect(() => {
         const getProducts = async () => {
             try {
@@ -28,8 +24,8 @@ function ItemDetailContainer() {
 
     return (
         <div className={styles.main}>
-            { itemDetail.length !== 0 ?
-                <ItemDetail item={itemDetail} onAdd={onAdd} /> 
+            { Object.keys(itemDetail).length !== 0 ?
+                <ItemDetail item={itemDetail} /> 
                 :
                 <h1 className={styles.loader}>... Loading</h1>
             }

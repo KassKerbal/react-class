@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ItemCount from '../ItemCount';
 import styles from "./styles.module.scss";
 
-function ItemDetail({ item, onAdd }) {
+function ItemDetail({ item }) {
+
+    const [cartCounter, setCartCounter] = useState(0);
+    const navigate = useNavigate();
+
+    const handleNavigate = (e) => {
+        navigate(e);
+    }
+
+    const onAdd = (counter) => {
+        setCartCounter(counter);
+      }
+     
 
     return (
         <div className={styles.main}>
@@ -17,9 +30,19 @@ function ItemDetail({ item, onAdd }) {
                     <div className={styles.discountPercentage}>Discount: {item.discountPercentage} %</div>
                     <div className={styles.description}>{item.description}</div>
                 </div>
-                <div className={styles.itemCountWrap}>
-                    <ItemCount stock={item.stock} initial={1} onAdd={onAdd} />
-                </div>
+                {
+                    !cartCounter ? 
+                        <div className={styles.itemCountWrap}>
+                            <ItemCount stock={item.stock} initial={1} onAdd={onAdd} />
+                        </div>
+                    :
+                    <div className={styles.btnCartWrap}>
+                        <div className={styles.btnCart} onClick={() => handleNavigate("/cart")}>
+                            Terminar Compra 
+                        </div>
+                    </div>
+
+                }
 
             </div>
         </div>
