@@ -1,5 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap');
+
 .main {
+    display: flex;
+    align-items: center;
     width: 100px;
     height: 100%;
     box-sizing: border-box;
+}
+
+.amount {
+    margin-left: 10px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
+    font-size: 22px;
 }

@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./styles.module.scss";
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import ParrotLogo from "../../assets/icons/ParrotLogo";
 import CartWidget from "../CartWidget";
 import { useNavigate } from 'react-router-dom';
+import { Shop } from '../../context/ShopContext';
 
 function NavBar() {
+
+    const value = useContext(Shop);
 
     const navigate = useNavigate();
 

@@ -1,21 +1,25 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Shop } from '../../context/ShopContext';
 import ItemCount from '../ItemCount';
 import styles from "./styles.module.scss";
+
 
 function ItemDetail({ item }) {
 
     const [cartCounter, setCartCounter] = useState(0);
+    const {addItem} = useContext(Shop);
     const navigate = useNavigate();
-
-    const handleNavigate = (e) => {
-        navigate(e);
-    }
 
     const onAdd = (counter) => {
         setCartCounter(counter);
       }
-     
+      
+    const handleTerminate = () => {
+        addItem(item, cartCounter);
+        navigate('/cart')
+    }
+        
 
     return (
         <div className={styles.main}>
@@ -37,13 +41,9 @@ function ItemDetail({ item }) {
                         </div>
                     :
                     <div className={styles.btnCartWrap}>
-                        <div className={styles.btnCart} onClick={() => handleNavigate("/cart")}>
-                            Terminar Compra 
-                        </div>
+                        <div className={styles.btnCart} onClick={handleTerminate}>Terminar Compra</div>
                     </div>
-
                 }
-
             </div>
         </div>
     )
