@@ -10,7 +10,9 @@ function CartWidget() {
   return (
     <div className={styles.main}>
       <ShoppingCartIcon fontSize="large"/>
-      <span className={styles.amount}>{(cart.length !== 0) ? cart.length : null}</span>
+      {
+        cart.length !== 0 && <span className={styles.amount}>{cart.length}</span>
+      }
     </div>
   )
 }

@@ -15,10 +15,8 @@ function ShopProvider({children}) {
   }
 
   const removeItem = (itemId) => {
-    const newCart = [...cart];
-    const indexItem = newCart.findIndex( e => e.id === itemId);
-    newCart.splice(indexItem, 1); 
-    setCart(newCart);
+    const filterItems = cart.filter( (e) => e.id !== itemId ); 
+    setCart(filterItems);
   }
 
   const isInCart = (id) => {

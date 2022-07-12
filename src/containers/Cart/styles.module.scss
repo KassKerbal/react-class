@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,600;1,400&display=swap');
+
 .main {
     display: flex;
     flex-direction: column;
@@ -5,24 +8,155 @@
     margin-top: 60px;
 }
 
-.table {
-    border: 0px hidden;
-    border-collapse: collapse;
-    padding: 5px;
+.shoppingWrap {
+    width: 1000px;
 }
 
-.table th {
-    border: 1px solid #C0C0C0;
-    padding: 5px;
-    background: #F0F0F0;
+.shoppingHeader {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 4px solid #c0c0c0;
+    span {
+        font-family: 'Rubik', sans-serif;
+        font-size: 30px;
+    }
 }
 
-.table td {
-    border: 1px solid #C0C0C0;
-    padding: 5px;
-    text-align: center;
+.shoppingDetails {
+    margin: 40px 0;
+    display: flex;
+    justify-content: space-between;
+    span:first-child {
+        width: 300px;
+        text-align: start;
+    }
+    span {
+        width: 100px;
+        text-align: center;
+        font-family: 'Source Sans Pro', sans-serif;
+        font-weight: 600;
+        color: #606060;
+        font-size: 18px;
+    }
+    span:last-child {
+        text-align: end;
+    }
+}
+
+.itemWrap {
+    margin: 40px 0;
+    font-family: 'Rubik', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: 400;
+    div:first-child {
+        width: 300px;
+        text-align: start;
+    }
+    div {
+        text-align: center;
+        width: 100px;
+    }
+    div:last-child {
+        text-align: end;
+    }
+
+}
+
+.itemInfoWrap {
+    display: flex;
+}
+
+.productImg {
+    width: 120px;
+    height: 120px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.titleContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 8px;
+
+    div:nth-child(2){
+        color: #606060;
+        text-align: left;
+        text-transform: capitalize;
+        font-size: 18px;
+    }
+}
+
+.shoppingFooter {
+    display: flex;
+    justify-content: space-between;
+}
+
+.continueShopping {
+    display: flex;
+    align-items: flex-end;
+}
+
+.linkContinueShopping {
+    display: flex;
+    align-items: flex-end;
+    color: #3f51b5;
+    font-family: 'Rubik', sans-serif;
+    font-size: 23px;
+    text-decoration: none;
+    white-space: nowrap;
+    img {
+        width: 30px;
+        height: 30px;
+        margin-right: 8px;
+    }
+}
+
+.totalPrice {
+    font-family: 'Rubik', sans-serif;
+    font-size: 30px;
+    width: 100%;
+    text-align: end;
+    div {
+        font-size: 20px;
+        font-weight: 400;
+        margin-top: 20px;
+    }
 }
 
 .clearWrap {
-    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 40px;
+}
+
+.noCartMain {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    h2 {
+        font-family: 'Rubik', sans-serif;
+        font-size: 30px;
+        color: #505050;
+    }
+}
+
+.noCartLink {
+    margin-top: 30px;
+    text-decoration: none;
+    font-family: 'Rubik', sans-serif;
+    font-size: 20px;
+    padding: 10px;
+    border: 3px solid #3f51b5;
+    border-radius: 10px;
+    &:hover {
+        background-color: #3f51b5;
+        color: white;
+    }
 }
