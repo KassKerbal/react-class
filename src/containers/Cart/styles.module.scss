@@ -28,20 +28,21 @@
     display: flex;
     justify-content: space-between;
     span:first-child {
-        width: 300px;
+        width: 450px;
         text-align: start;
-    }
-    span {
-        width: 100px;
-        text-align: center;
-        font-family: 'Source Sans Pro', sans-serif;
-        font-weight: 600;
-        color: #606060;
-        font-size: 18px;
     }
     span:last-child {
         text-align: end;
     }
+}
+
+.shopBox {
+    min-width: 100px;
+    text-align: center;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 600;
+    color: #606060;
+    font-size: 18px;
 }
 
 .itemWrap {
@@ -51,22 +52,22 @@
     justify-content: space-between;
     font-size: 20px;
     font-weight: 400;
-    div:first-child {
-        width: 300px;
-        text-align: start;
-    }
-    div {
-        text-align: center;
-        width: 100px;
-    }
+
     div:last-child {
         text-align: end;
     }
-
 }
 
-.itemInfoWrap {
+.itemInfo {
+    width: 450px;
     display: flex;
+    text-align: start;
+}
+
+.itemBox {
+    min-width: 100px;
+    text-align: center;
+
 }
 
 .productImg {
@@ -84,10 +85,20 @@
     margin-left: 8px;
 
     div:nth-child(2){
-        color: #606060;
+        color: #303030;
         text-align: left;
         text-transform: capitalize;
         font-size: 18px;
+    }
+}
+
+.remove {
+    display: flex;
+    text-align: start;
+    color: #606060;
+    font-size: 18px;
+    span {
+        cursor: pointer;
     }
 }
 

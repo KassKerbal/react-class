@@ -18,7 +18,7 @@ function NavBar() {
     }
 
     const categories = [
-        "smartphones",
+        "food",
         "laptops",
         "fragrances",
         "groceries",

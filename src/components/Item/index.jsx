@@ -6,7 +6,7 @@ function Item({ item, onClickNavigate }) {
     return (
         <div className={styles.main}  onClick={() => onClickNavigate(`/item/${item.id}`)}>
             <div className={styles.imageContainer}>
-                <img src={item.images[0]} alt="product"/>
+                <img src={item.image} alt="product"/>
             </div>
             <div className={styles.container}>
                 <div className={styles.title}>{item.title}</div>

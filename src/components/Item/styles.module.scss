@@ -3,21 +3,25 @@
 
 .main {
     width: 300px;
-    height: fit-content;
-    background-color: rgb(236, 199, 156);
-    border-radius: 30px;
+    height: 500px;
+    border-radius: 5px;
+    border: 2px solid #3f51b5;
     margin: 20px;
     padding: 20px;
     box-sizing: border-box;
-    transition-duration: 1s;
+    transition-duration: .4s;
     cursor: pointer;
+    &:hover {
+        -webkit-box-shadow: 2px 0px 16px 0px #0B325E, 5px 5px 15px 5px rgba(0,0,0,0); 
+        box-shadow: 2px 0px 16px 0px #0B325E, 5px 5px 15px 5px rgba(0,0,0,0);
+    }
 }
 
 .imageContainer {
     display: flex;
     justify-content: center;
     img {
-        width: 200px;
+        width: 150px;
         height: 150px;
     }
 }
@@ -30,13 +34,16 @@
 }
 
 .price {
-    margin-bottom: 14px;
+    text-align: center;
+    color: #cc0000;
+    margin: 14px 0;
     font-family: 'Rubik', sans-serif;
     font-weight: 500;
     font-size: 22px;
 }
 
 .description {
+    text-align: justify;
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
     font-size: 16px;

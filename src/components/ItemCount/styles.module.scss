@@ -1,67 +1,80 @@
-
 .main {
     user-select: none;
+    display: flex;
+    align-items: center;
 }
 
 .counterWrap {
+    width: fit-content;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px 0;
+    margin: 20px 20px 20px 0;
 }
 
 .buttonCounter {
-    position: relative;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    img {
-        position: absolute;
-        border-radius: 50%;
-        top: -3px;
-        left: -3px;
-        width: 52px;
-        height: 52px;
+    display: flex;
+    flex-direction: column;
+    button {
+        width: 30px;
+        height: 25px;
+        cursor: pointer;
     }
 }
 
 .counterNumber {
-    width: 150px;
+    width: 100px;
+    height: 48px;
+    border: 1px solid #606060;
+    border-right: none;
     font-size: 30px;
     font-weight: 700;
     text-align: center;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    &[type=number] {
+        -moz-appearance: textfield;
+    }
+
 }
 
-.buttonAdd{
+.buttonAdd {
     button {
-      width: 256px;
-      font-family: sans-serif;
-      font-weight: bold;
-      font-size: 18px;
-      color: #000000;
-      text-transform: uppercase;
-      background: #e0a244;
-      padding: 6px 12px;
-      border: 4px solid #e0a244;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: all 0.3s ease 0s;
-      cursor: pointer;
+        width: 256px;
+        font-family: sans-serif;
+        font-weight: bold;
+        font-size: 18px;
+        color: #000000;
+        text-transform: uppercase;
+        background: #ffffff;
+        padding: 6px 12px;
+        border: 4px solid #6144e0;
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.3s ease 0s;
+        cursor: pointer;
     }
-    
+
     button:hover {
-      color: #161616;
-      border-radius: 50px;
-      border-color: #161616;
-      transition: all 0.6s ease 0s;
+        color: #ffffff;
+        background: #6144e0;
+        border-radius: 50px;
+        border-color: #161616;
+        transition: all 0.3s ease 0s;
     }
+
     button:disabled {
         color: #161616;
         background: gray;
         border: 4px solid gray;
         cursor: default;
     }
+
     button:disabled:hover {
         border-radius: 0px;
         background: gray;
@@ -69,4 +82,3 @@
         cursor: default;
     }
 }
-

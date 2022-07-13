@@ -1,28 +1,37 @@
 import React, { useState } from 'react';
 import styles from "./styles.module.scss";
-import addIcon from "../../assets/icons/add.png";
-import subsIcon from "../../assets/icons/minus.png";
+import ArrowUp from "../../assets/icons/ArrowUp"
+import ArrowDown from "../../assets/icons/ArrowDown"
 
 function ItemCount({ stock, initial, onAdd }) {
 
-    const [counter, setCounter] = useState(parseInt(initial));
+    const [value, setValue] = useState(parseInt(initial));
 
     const handlerAddition = () => {
-        if (counter < stock) setCounter(counter + 1);
+        if (value < stock) setValue(parseInt(value) + 1);
     }
     const handlerSubtract = () => {
-        if (counter > 0) setCounter(counter - 1);
+        if (value > 0) setValue(parseInt(value) - 1);
     }
+
+    const handlerChange = (e) => {
+        if (e.target.value < stock) {
+            setValue(e.target.value);
+        } else setValue(stock);
+     }
 
     return (
         <div className={styles.main}>
+            
             <div className={styles.counterWrap}>
-                <button className={styles.buttonCounter} onClick={handlerAddition}><img alt="add" src={addIcon}></img></button>
-                <span className={styles.counterNumber}>{counter}</span>
-                <button className={styles.buttonCounter} onClick={handlerSubtract}><img alt="subs" src={subsIcon}></img></button>
+                <input type="number" className={styles.counterNumber} value={value} onChange={handlerChange} ></input>
+                <div className={styles.buttonCounter} >
+                    <button onClick={handlerAddition}><ArrowUp /></button>
+                    <button onClick={handlerSubtract}><ArrowDown /></button>
+                </div>
             </div>
             <div className={styles.buttonAdd}>
-                <button onClick={() => onAdd(counter)} disabled={counter <= 0}>Agregar al carrito</button>
+                <button onClick={() => onAdd(value)} disabled={value <= 0}>Agregar al carrito</button>
             </div>
         </div>
     )

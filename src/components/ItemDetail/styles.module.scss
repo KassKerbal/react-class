@@ -5,8 +5,8 @@
     display: flex;
     width: 1000px;
     height: fit-content;
-    background-color: rgb(236, 199, 156);
-    border-radius: 30px;
+    border-radius: 5px;
+    border: 2px solid #3f51b5;
     margin: 20px;
     padding: 20px;
     box-sizing: border-box;
@@ -16,7 +16,7 @@
     display: flex;
     align-items: center;
     img {
-        width: 400px;
+        width: 300px;
         height: 300px;
     }
 }
@@ -27,7 +27,6 @@
 
 .infoWrap {
     display: flex;
-    align-items: center;
     flex-direction: column;
 }
 
@@ -36,29 +35,19 @@
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     font-size: 20px;
+    color: #0055aa;
 }
 
-.price {
-    margin-bottom: 14px;
-    font-family: 'Rubik', sans-serif;
-    font-weight: 500;
-    font-size: 22px;
-}
-
-.discountPercentage {
-    margin-bottom: 14px;
+.subTitle {
+    margin: 14px 0;
     font-family: 'Rubik', sans-serif;
     font-weight: 500;
     font-size: 16px;
-    color: #aa0000;
-}
-
-.stock {
-    margin-bottom: 14px;
-    font-family: 'Rubik', sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-    color: #0005aa;
+    color: #606060;
+    span {
+        color: #000000;
+        text-transform: capitalize;
+    }
 }
 
 .description {
@@ -67,10 +56,29 @@
     font-size: 16px;
 }
 
+.addCartWrap {
+    display: flex;
+}
+
+.price {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
+    font-size: 22px;
+    color: #cc0000;
+    span {
+        height: fit-content;
+        padding: 5px 10px;
+        border-radius: 6px;
+        border: 1px solid red;
+    }
+}
+
 .itemCountWrap {
     display: flex;
     justify-content: center;
-    width: 100%;
 }
 
 .btnCartWrap {
