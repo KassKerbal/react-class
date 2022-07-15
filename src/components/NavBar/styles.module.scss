@@ -7,6 +7,7 @@
 }
 
 .topWrap {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -19,6 +20,12 @@
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+.cartWidgetContainer {
+    position: absolute;
+    top: 18px;
+    right: 0;
 }
 
 .clickContainer {

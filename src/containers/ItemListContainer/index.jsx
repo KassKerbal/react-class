@@ -39,7 +39,7 @@ function ItemListContainer() {
             {items.length !== 0 ?
                 <ItemList items={items} />
                 :
-                <h1 className={styles.loader}>... Loading</h1>
+                <h1 className={styles.loader}>... Cargando</h1>
             }
         </div>
     )

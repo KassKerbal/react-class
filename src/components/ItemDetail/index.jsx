@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Shop } from '../../context/ShopContext';
 import ItemCount from '../ItemCount';
 import styles from "./styles.module.scss";
-
+import CategoryEs from '../../lenguages/CategoryEs';
 
 function ItemDetail({ item }) {
 
@@ -20,6 +20,7 @@ function ItemDetail({ item }) {
         navigate('/cart')
     }
 
+    const category = CategoryEs(item);
 
     return (
         <div className={styles.main}>
@@ -28,10 +29,10 @@ function ItemDetail({ item }) {
             </div>
             <div className={styles.container}>
                 <div className={styles.infoWrap}>
-                    <div className={styles.title}>Product: {item.title}</div>
-                    <div className={styles.subTitle}>Brand: <span>{item.brand}</span></div>
+                    <div className={styles.title}>Producto: {item.title}</div>
+                    <div className={styles.subTitle}>Marca: <span>{item.brand}</span></div>
                     <div className={styles.description}>{item.description}</div>
-                    <div className={styles.subTitle}>Category: <span>{item.category}</span></div>
+                    <div className={styles.subTitle}>Categoría: <span>{category}</span></div>
                 </div>
                 <div className={styles.addCartWrap}>
                     <div className={styles.price}><span>{item.price} €</span></div>
@@ -42,7 +43,7 @@ function ItemDetail({ item }) {
                             </div>
                             :
                             <div className={styles.btnCartWrap}>
-                                <div className={styles.btnCart} onClick={handleTerminate}>Terminar Compra</div>
+                                <button onClick={handleTerminate}>Terminar Compra</button>
                             </div>
                     }
 

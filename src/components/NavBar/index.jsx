@@ -18,14 +18,25 @@ function NavBar() {
     }
 
     const categories = [
-        "food",
-        "laptops",
-        "fragrances",
-        "groceries",
-        "furniture",
+        {
+            "route": "food",
+            "tagName": "alimentación"
+        },
+        {
+            "route": "cages",
+            "tagName": "jaulas"
+        },
+        {
+            "route": "toys",
+            "tagName": "juguetes"
+        },
+        {
+            "route": "accessories",
+            "tagName": "accesorios"
+        },
     ]
 
-    const buttonCategories = categories.map((e, index) => <Button onClick={() => handleNavigate(`/category/${e}`)} key={index}>{e}</Button>)
+    const buttonCategories = categories.map((e, index) => <Button onClick={() => handleNavigate(`/category/${e.route}`)} key={index}>{e.tagName}</Button>)
 
     return (
         <div className={styles.main}>
@@ -36,7 +47,9 @@ function NavBar() {
                         <div className={styles.title}>Palitos para Alanna</div>
                     </div>
                 </div>
-                <CartWidget />
+                <div className={styles.cartWidgetContainer}>
+                    <CartWidget />
+                </div>
             </div>
             <div className={styles.buttonWrap}>
                 <ButtonGroup orientation="horizontal" variant="text" aria-label="horizontal contained button group" >

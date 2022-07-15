@@ -6,6 +6,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import backArrow from '../../assets/icons/backArrow.png'
+import CategoryEs from '../../lenguages/CategoryEs';
 
 function Cart() {
 
@@ -17,20 +18,20 @@ function Cart() {
       },
     },
   });
-
+  
   const { cart, removeItem, clear } = useContext(Shop);
   const [totalPrice, setTotalPrice] = useState(0);
-
+  
   const cartMap = cart.map(e => {
-    console.log(e)
+    const category = CategoryEs(e)
     return (
       <div className={styles.itemWrap} key={e.id}>
         <div className={styles.itemInfo}>
           <div className={styles.productImg} style={{ backgroundImage: `url(${e.image})` }}></div>
           <div className={styles.titleContainer}>
             <div>{e.title}</div>
-            <div>{e.category}</div>
-            <div className={styles.remove}><span onClick={() => removeItem(e.id)}>Remove</span></div>
+            <div>{category}</div>
+            <div className={styles.remove}><span onClick={() => removeItem(e.id)}>Eliminar</span></div>
           </div>
         </div>
         <div className={styles.itemBox}>{e.quantity}</div>
@@ -57,36 +58,36 @@ function Cart() {
 
           <div className={styles.shoppingWrap}>
             <div className={styles.shoppingHeader}>
-              <span>Shopping Cart</span>
-              <span>Items</span>
+              <span>Carro De Compras</span>
+              <span>Productos</span>
             </div>
 
             <div className={styles.shoppingDetails}>
-              <span className={styles.shopBox}>Product Details</span>
-              <span className={styles.shopBox}>Quantity</span>
-              <span className={styles.shopBox}>Price</span>
+              <span className={styles.shopBox}>Detalles del Producto</span>
+              <span className={styles.shopBox}>Cantidad</span>
+              <span className={styles.shopBox}>Precio</span>
               <span className={styles.shopBox}>Total</span>
             </div>
 
             {cartMap}
             <div className={styles.shoppingFooter}>
               <div className={styles.continueShopping}>
-                <Link to='/' className={styles.linkContinueShopping}><img src={backArrow} alt={"back"}/>Continue Shopping </Link>
+                <Link to='/' className={styles.linkContinueShopping}><img src={backArrow} alt={"back"}/>Seguir Comprando</Link>
               </div>
-              <div className={styles.totalPrice}>Total Price<div> {totalPrice} €</div> </div>
+              <div className={styles.totalPrice}>Precio Total<div> {totalPrice} €</div> </div>
             </div>
 
             <div className={styles.clearWrap}>
               <ThemeProvider theme={theme}>
-                <Button variant="contained" color="red" onClick={clear}> CLEAR ALL </Button>
+                <Button variant="contained" color="red" onClick={clear}> BORRAR TODO </Button>
               </ThemeProvider>
             </div>
           </div>
         </div>
         :
         <div className={styles.noCartMain}>
-          <h2>Cart is empty!</h2>
-          <Link className={styles.noCartLink} to="/">Continue Shopping</Link>
+          <h2>¡Tu carrito está vacío!</h2>
+          <Link className={styles.noCartLink} to="/">Seguir Comprando</Link>
         </div>
       }
     </div>

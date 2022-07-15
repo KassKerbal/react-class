@@ -17,7 +17,6 @@ function ItemDetailContainer() {
                 const productDetail = {id: docSnap.id, ...docSnap.data()};
                 if (docSnap.exists()) {
                     setItemDetail(productDetail);
-                    console.log(productDetail)
                 } else {
                     console.log("No such document!");
                 }
@@ -33,7 +32,7 @@ function ItemDetailContainer() {
             {Object.keys(itemDetail).length !== 0 ?
                 <ItemDetail item={itemDetail} />
                 :
-                <h1 className={styles.loader}>... Loading</h1>
+                <h1 className={styles.loader}>... Cargando</h1>
             }
         </div>
     )
