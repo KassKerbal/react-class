@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Shop } from '../../context/ShopContext';
 import styles from './styles.module.scss';
 import Button from '@mui/material/Button';
-import DeleteIcon from '@mui/icons-material/Delete';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import backArrow from '../../assets/icons/backArrow.png'

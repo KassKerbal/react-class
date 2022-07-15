@@ -8,9 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { Shop } from '../../context/ShopContext';
 
 function NavBar() {
-
-    const value = useContext(Shop);
-
+    
     const navigate = useNavigate();
 
     const handleNavigate = (e) => {
