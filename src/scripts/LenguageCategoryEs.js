@@ -1,5 +1,4 @@
-function CategoryEs(item) {
-
+function LenguageCategoryEs(item) {
     switch (item.category) {
         case "food":
             return "Alimentación";
@@ -12,7 +11,5 @@ function CategoryEs(item) {
         default:
             break;
     }
-   
 }
-
-export default CategoryEs
+export default LenguageCategoryEs

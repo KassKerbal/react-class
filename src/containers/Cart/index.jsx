@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import backArrow from '../../assets/icons/backArrow.png'
-import CategoryEs from '../../lenguages/CategoryEs';
+import LenguageCategoryEs from '../../scripts/LenguageCategoryEs';
 
 function Cart() {
 
@@ -17,12 +17,13 @@ function Cart() {
       },
     },
   });
-  
+
   const { cart, removeItem, clear } = useContext(Shop);
   const [totalPrice, setTotalPrice] = useState(0);
-  
+
   const cartMap = cart.map(e => {
-    const category = CategoryEs(e)
+    const category = LenguageCategoryEs(e);
+
     return (
       <div className={styles.itemWrap} key={e.id}>
         <div className={styles.itemInfo}>
@@ -43,15 +44,15 @@ function Cart() {
 
   useEffect(() => {
     const priceReduce = () => {
-      const totalValue = Object.values(cart).reduce((t, obj) => t + (obj.price * obj.quantity), 0);
-      console.log(totalValue);
-      setTotalPrice(totalValue);
+      const totalValue = Object.values(cart).reduce((t, obj) => t + (obj.price * 100 * obj.quantity) / 100, 0);
+      const roundedPrice = (Math.round(totalValue * 100)) / 100
+      setTotalPrice(roundedPrice);
     }
     priceReduce();
   }, [cart])
 
   return (
-    <div>
+    <>
       {(cart.length !== 0) ?
         <div className={styles.main}>
 
@@ -71,7 +72,7 @@ function Cart() {
             {cartMap}
             <div className={styles.shoppingFooter}>
               <div className={styles.continueShopping}>
-                <Link to='/' className={styles.linkContinueShopping}><img src={backArrow} alt={"back"}/>Seguir Comprando</Link>
+                <Link to='/' className={styles.linkContinueShopping}><img src={backArrow} alt={"back"} />Seguir Comprando</Link>
               </div>
               <div className={styles.totalPrice}>Precio Total<div> {totalPrice} €</div> </div>
             </div>
@@ -89,7 +90,7 @@ function Cart() {
           <Link className={styles.noCartLink} to="/">Seguir Comprando</Link>
         </div>
       }
-    </div>
+    </>
   )
 }
 

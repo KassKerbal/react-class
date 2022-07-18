@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Shop } from '../../context/ShopContext';
 import ItemCount from '../ItemCount';
 import styles from "./styles.module.scss";
-import CategoryEs from '../../lenguages/CategoryEs';
+import LenguageCategoryEs from '../../scripts/LenguageCategoryEs';
 
 function ItemDetail({ item }) {
 
@@ -13,14 +13,14 @@ function ItemDetail({ item }) {
 
     const onAdd = (counter) => {
         setCartCounter(counter);
+        addItem(item, counter);
     }
-
+    
     const handleTerminate = () => {
-        addItem(item, cartCounter);
         navigate('/cart')
     }
 
-    const category = CategoryEs(item);
+    const category = LenguageCategoryEs(item);
 
     return (
         <div className={styles.main}>

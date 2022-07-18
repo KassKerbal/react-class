@@ -2,37 +2,23 @@ import React, { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import ItemList from "../../components/ItemList";
 import { useParams } from 'react-router-dom';
-import { collection, query, getDocs } from "firebase/firestore";
-import { db } from "../../firebase/config";
+
+import UseProductHook from "../../scripts/UseProductHook";
 
 function ItemListContainer() {
 
     const [items, setItems] = useState([]);
     const params = useParams();
+    const  [productHook, error] = UseProductHook();
 
-    useEffect(() => {
-        const getProducts = async () => {
-            try {
-                const q = query(collection(db, "products"));
-                const querySnapshot = await getDocs(q);
-                const products = [];
-                querySnapshot.forEach((doc) => {
-                    // doc.data() is never undefined for query doc snapshots
-                    products.push({ id: doc.id, ...doc.data() });
-                    if (params?.categoryId) {
-                        const filterProducts = products.filter(item => item.category === params.categoryId);
-                        setItems(filterProducts);
-                    } else {
-                        setItems(products);
-                    }
-                });
-
-            } catch (err) {
-                console.log(err);
-            }
-        }
-        getProducts();
-    }, [params.categoryId]);
+    useEffect((() => {
+        error && console.log(error);
+        if (params?.categoryId) {
+            const products = [...productHook];
+            const filterProducts = products.filter(item => item.category === params.categoryId);
+            setItems(filterProducts);
+        } else setItems(productHook);
+    }), [productHook, params]);
 
     return (
         <div className={styles.main}>
