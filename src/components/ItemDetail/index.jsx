@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { Shop } from '../../context/ShopContext';
 import ItemCount from '../ItemCount';
 import styles from "./styles.module.scss";
-import LenguageCategoryEs from '../../scripts/LenguageCategoryEs';
+import LenguageCategoryEs from '../../utils/LenguageCategoryEs';
 
-function ItemDetail({ item }) {
+function ItemDetail({ item, initial }) {
 
     const [cartCounter, setCartCounter] = useState(0);
     const { addItem } = useContext(Shop);
@@ -15,7 +15,7 @@ function ItemDetail({ item }) {
         setCartCounter(counter);
         addItem(item, counter);
     }
-    
+
     const handleTerminate = () => {
         navigate('/cart')
     }
@@ -39,7 +39,7 @@ function ItemDetail({ item }) {
                     {
                         !cartCounter ?
                             <div className={styles.itemCountWrap}>
-                                <ItemCount stock={item.stock} initial={1} onAdd={onAdd} />
+                                <ItemCount stock={item.stock} initial={initial} onAdd={onAdd} />
                             </div>
                             :
                             <div className={styles.btnCartWrap}>

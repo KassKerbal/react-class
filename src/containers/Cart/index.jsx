@@ -2,24 +2,21 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Shop } from '../../context/ShopContext';
 import styles from './styles.module.scss';
 import Button from '@mui/material/Button';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import backArrow from '../../assets/icons/backArrow.png'
-import LenguageCategoryEs from '../../scripts/LenguageCategoryEs';
+import LenguageCategoryEs from '../../utils/LenguageCategoryEs';
+import Theme from '../../assets/themes/Themes';
+import UserForm from '../../components/userForm';
+import GenerateOrder from '../../utils/GenerateOrder';
+import SaveOrder from '../../utils/SaveOrder';
 
 function Cart() {
 
-  const theme = createTheme({
-    palette: {
-      red: {
-        main: '#ff0000',
-        contrastText: '#fff',
-      },
-    },
-  });
-
-  const { cart, removeItem, clear } = useContext(Shop);
+  const { cart, remplaceItemQuantity, removeItem, clear, calcTotalPrice } = useContext(Shop);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [isMakeOrder, setMakeOrder] = useState(false);
+  const [isValidation, setValidation] = useState({ status: "idle", items: [] });
 
   const cartMap = cart.map(e => {
     const category = LenguageCategoryEs(e);
@@ -36,54 +33,87 @@ function Cart() {
         </div>
         <div className={styles.itemBox}>{e.quantity}</div>
         <div className={styles.itemBox}>{e.price} €</div>
-        <div className={styles.itemBox}>{e.price * e.quantity} €</div>
+        <div className={styles.itemBox}>{Math.round(e.price * e.quantity * 100) / 100} €</div>
       </div>
     )
   }
   )
 
   useEffect(() => {
-    const priceReduce = () => {
-      const totalValue = Object.values(cart).reduce((t, obj) => t + (obj.price * 100 * obj.quantity) / 100, 0);
-      const roundedPrice = (Math.round(totalValue * 100)) / 100
-      setTotalPrice(roundedPrice);
-    }
-    priceReduce();
+    const total = calcTotalPrice()
+    setTotalPrice(total);
   }, [cart])
+
+  const handleClose = (e) => {
+    setMakeOrder(e);
+  }
+
+  const handleOrder = (user) => {
+    const order = GenerateOrder(user, cart, totalPrice);
+    SaveOrder(cart, order, (e) => setValidation(e));
+  }
+
+  useEffect(() => {
+    switch (isValidation.status) {
+      case "OrderCompleated":
+        clear()
+        break;
+      case "BuyRemaining":
+        isValidation.items.forEach((product) => {
+          remplaceItemQuantity(product.id, product.stock);
+        })
+        break;
+      case "OutOfStock":
+        isValidation.items.forEach((product) => {
+          removeItem(product.id);
+        })
+        break;
+
+      default:
+        break;
+    }
+  }, [isValidation])
 
   return (
     <>
       {(cart.length !== 0) ?
-        <div className={styles.main}>
+        <> {isMakeOrder && <div className={styles.userFormWrap}> <UserForm generateOrder={handleOrder} handlerClose={handleClose} /> </div>}
+          <div className={styles.main}>
 
-          <div className={styles.shoppingWrap}>
-            <div className={styles.shoppingHeader}>
-              <span>Carro De Compras</span>
-              <span>Productos</span>
-            </div>
-
-            <div className={styles.shoppingDetails}>
-              <span className={styles.shopBox}>Detalles del Producto</span>
-              <span className={styles.shopBox}>Cantidad</span>
-              <span className={styles.shopBox}>Precio</span>
-              <span className={styles.shopBox}>Total</span>
-            </div>
-
-            {cartMap}
-            <div className={styles.shoppingFooter}>
-              <div className={styles.continueShopping}>
-                <Link to='/' className={styles.linkContinueShopping}><img src={backArrow} alt={"back"} />Seguir Comprando</Link>
+            <div className={styles.shoppingWrap}>
+              <div className={styles.shoppingHeader}>
+                <span>Carro De Compras</span>
+                <span>Productos</span>
               </div>
-              <div className={styles.totalPrice}>Precio Total<div> {totalPrice} €</div> </div>
-            </div>
 
-            <div className={styles.clearWrap}>
-              <ThemeProvider theme={theme}>
-                <Button variant="contained" color="red" onClick={clear}> BORRAR TODO </Button>
-              </ThemeProvider>
+              <div className={styles.shoppingDetails}>
+                <span className={styles.shopBox}>Detalles del Producto</span>
+                <span className={styles.shopBox}>Cantidad</span>
+                <span className={styles.shopBox}>Precio</span>
+                <span className={styles.shopBox}>Total</span>
+              </div>
+
+              {cartMap}
+              <div className={styles.shoppingFooter}>
+                <div className={styles.continueShopping}>
+                  <Link to='/' className={styles.linkContinueShopping}><img src={backArrow} alt={"back"} />Seguir Comprando</Link>
+                </div>
+                <div className={styles.totalPrice}>Precio Total<div> {totalPrice} €</div> </div>
+              </div>
+
+              <div className={styles.optionsWrap}>
+                <ThemeProvider theme={Theme}>
+                  <Button variant="contained" color="red" onClick={clear}> BORRAR TODO </Button>
+                </ThemeProvider>
+
+                <ThemeProvider theme={Theme}>
+                  <Button variant="contained" color="green" onClick={() => handleClose(true)}> REALIZAR PEDIDO </Button>
+                </ThemeProvider>
+
+              </div>
             </div>
           </div>
-        </div>
+        </>
         :
         <div className={styles.noCartMain}>
           <h2>¡Tu carrito está vacío!</h2>

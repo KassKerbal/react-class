@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import ItemList from "../../components/ItemList";
 import { useParams } from 'react-router-dom';
-
-import UseProductHook from "../../scripts/UseProductHook";
+import UseProductHook from "../../utils/UseProductHook";
 
 function ItemListContainer() {
 

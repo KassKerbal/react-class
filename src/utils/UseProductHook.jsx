@@ -5,16 +5,17 @@ import { db } from "../firebase/config";
 function UseProductHook(itemId) {
 
     const [productHook, setProducts] = useState([]);
+
     const [error, setError] = useState(null);
 
     useEffect((() => {
 
         if (itemId) {
-            ( async () => {
+            (async () => {
                 try {
                     const docRef = doc(db, "products", itemId);
                     const docSnap = await getDoc(docRef);
-                    const productDetail = {id: docSnap.id, ...docSnap.data()};
+                    const productDetail = { id: docSnap.id, ...docSnap.data() };
                     if (docSnap.exists()) {
                         setProducts(productDetail);
                     } else {
@@ -24,9 +25,9 @@ function UseProductHook(itemId) {
                     setError(err);
                 }
 
-            })()  
+            })()
         } else {
-            ( async () => {
+            (async () => {
                 try {
                     const q = query(collection(db, "products"));
                     const querySnapshot = await getDocs(q);
@@ -35,14 +36,15 @@ function UseProductHook(itemId) {
                         products.push({ id: doc.id, ...doc.data() });
                         setProducts(products);
                     });
-                
+
                 } catch (err) {
+                    setError(err);
                 }
             })()
 
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }),[]);
+    }), []);
 
     return [productHook, error]
 }

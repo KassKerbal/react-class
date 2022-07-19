@@ -8,6 +8,7 @@ Se incluye las dependencias de:
 
     1. MaterialUI para los botones en la navegación. Por estilo y sencillez al código.
     2. Sass para el preprocesado del CSS, sencillez al código y evitar los conflictos con otros estilos que son difíciles de debuggear.
+    3. SweetAlert 2 para estilos en las alertas usadas.
 
 
 Alumno: Bernardo Jorge Zulliger Pizarro
