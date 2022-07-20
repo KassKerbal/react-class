@@ -45,7 +45,7 @@ function NavBar() {
                     </div>
                 </div>
                 <div className={styles.cartWidgetContainer}>
-                    <CartWidget />
+                    <CartWidget navigate={handleNavigate}/>
                 </div>
             </div>
             <div className={styles.buttonWrap}>

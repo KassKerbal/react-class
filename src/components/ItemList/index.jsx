@@ -13,7 +13,6 @@ function ItemList({ items }) {
 
   const itemListMap = items.map((e) => {
     return (
-
       <Item
         onClickNavigate={handleNavigate}
         item={e}

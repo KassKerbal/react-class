@@ -26,7 +26,7 @@ function SaveOrder(cart, order, isValidation) {
                     outOfStock.push(product);
                 }
             } catch (err) {
-                console.log(err);
+                Swal.fire('¡Error! No se ha podido realizar la compra');
             }
 
             if (cart.length - 1 === idx) {
@@ -42,7 +42,7 @@ function SaveOrder(cart, order, isValidation) {
                             })
                         })
                     } catch (err) {
-                        console.log(err);
+                        Swal.fire('¡Error! No se ha podido realizar la compra');
                     }
                 } else {
 

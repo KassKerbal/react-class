@@ -3,12 +3,13 @@ import styles from "./styles.module.scss";
 import ItemDetail from "../../components/ItemDetail";
 import { useParams } from 'react-router-dom';
 import UseProductHook from "../../utils/UseProductHook";
+import Swal from 'sweetalert2'
 
 function ItemDetailContainer() {
 
     const params = useParams();
     const  [productHook, error] = UseProductHook(params.itemId);
-    error && console.log(error);
+    error && Swal.fire(`¡Error! ${error}`);
 
     const initial = (productHook.stock) > 0 ? 1 : 0;
     

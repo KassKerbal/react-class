@@ -3,6 +3,7 @@ import styles from "./styles.module.scss";
 import ItemList from "../../components/ItemList";
 import { useParams } from 'react-router-dom';
 import UseProductHook from "../../utils/UseProductHook";
+import Swal from 'sweetalert2'
 
 function ItemListContainer() {
 
@@ -11,7 +12,7 @@ function ItemListContainer() {
     const  [productHook, error] = UseProductHook();
 
     useEffect((() => {
-        error && console.log(error);
+        error && Swal.fire(`¡Error! ${error}`);
         if (params?.categoryId) {
             const products = [...productHook];
             const filterProducts = products.filter(item => item.category === params.categoryId);

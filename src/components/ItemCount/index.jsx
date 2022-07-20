@@ -15,14 +15,12 @@ function ItemCount({ stock, initial, onAdd }) {
     }
 
     const handlerChange = (e) => {
-        if (e.target.value < stock) {
-            setValue(e.target.value);
-        } else setValue(stock);
-     }
+        (e.target.value < stock) ? setValue(e.target.value) : setValue(stock);
+    }
 
     return (
         <div className={styles.main}>
-            
+
             <div className={styles.counterWrap}>
                 <input type="number" className={styles.counterNumber} value={value} onChange={handlerChange} ></input>
                 <div className={styles.buttonCounter} >

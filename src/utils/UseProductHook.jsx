@@ -5,7 +5,6 @@ import { db } from "../firebase/config";
 function UseProductHook(itemId) {
 
     const [productHook, setProducts] = useState([]);
-
     const [error, setError] = useState(null);
 
     useEffect((() => {
@@ -43,7 +42,6 @@ function UseProductHook(itemId) {
             })()
 
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }), []);
 
     return [productHook, error]

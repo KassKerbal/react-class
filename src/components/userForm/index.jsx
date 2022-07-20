@@ -1,95 +1,68 @@
 import React, { useState } from 'react';
 import styles from './styles.module.scss';
-import CheckUser from '../../utils/CheckUser';
+import { useForm } from "react-hook-form";
 
 function UserForm({ handlerClose, generateOrder }) {
 
-  const [name, setName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [phone, setPhone] = useState(0);
-  const [email, setEmail] = useState("");
-  const [country, setCountry] = useState("");
-  const [adress, setAdress] = useState("");
-  const [zipCode, setZipCode] = useState(0);
+  const { register, handleSubmit } = useForm();
+  const [isVisible, setVisible] = useState(false);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const newUser = {
-      name: name,
-      lastName: lastName,
-      phone: phone,
-      email: email,
-      country: country,
-      adress: adress,
-      zipCode: zipCode,
-    };
-    const isValid = CheckUser(newUser)
+  const validateMail = (user) => {
+    if (user.email === user.reEmail) {
+      setVisible(false);
+      return true;
+    } else {
+      setVisible(true);
+      return false;
+    }
+  }
+
+  const onSubmit = (event) => {
+    const newUser = event;
+    const isValid = validateMail(event);
     isValid && generateOrder(newUser);
-    handlerClose(false);
+    isValid && handlerClose(false);
   }
 
   return (
     <div className={styles.main}>
       <div className={styles.cancel}><span onClick={() => handlerClose(false)}>Cancelar</span></div>
-      <form onSubmit={handleSubmit}>
-        <div className={styles.formInput}>
-          <h2>Información Personal</h2>
-          <label>Nombre:
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required />
-          </label>
-          <label>Apellidos:
-            <input
-              type="text"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-              required />
-          </label>
-        </div>
-        <div className={styles.formInput}>
-          <h2>Información de Contacto</h2>
-          <label>Teléfono:
-            <input
-              type="number"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              required />
-          </label>
-          <label>E-mail:
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required />
-          </label>
-          <label>País:
-            <input
-              type="text"
-              value={country}
-              onChange={(e) => setCountry(e.target.value)}
-              required />
-          </label>
-          <label>Dirección:
-            <input
-              type="text"
-              value={adress}
-              onChange={(e) => setAdress(e.target.value)}
-              required />
-          </label>
-          <label>Código Postal:
-            <input
-              type="number"
-              value={zipCode}
-              onChange={(e) => setZipCode(e.target.value)}
-              required />
-          </label>
-          <div className={styles.submitWrap}>
-            <input className={styles.submit} type="submit" />
-          </div>
 
+      <form className={styles.formInput} onSubmit={handleSubmit(onSubmit)}>
+        <h2>Información Personal</h2>
+        <input {...register("name", {
+          required: true, minLength: {
+            value: 3,
+            message: 'error message'
+          }
+        })} placeholder={"Nombre"} />
+        <input {...register("lastName", {
+          required: true, minLength: {
+            value: 3,
+            message: 'error message'
+          }
+        })} placeholder={"Apellidos"} />
+        <h2>Información de Contacto</h2>
+        <input {...register("phone", {
+          required: true, validate: {
+            number: (v) => parseInt(v) > 0
+          }
+        })} placeholder={"Teléfono"} />
+        <p className={isVisible ? styles.validationCheck : styles.disable }>Email no coincide</p>
+        <input {...register("email", { required: true })} placeholder={"Email"} />
+        <input {...register("reEmail", { required: true })} placeholder={"Re-Email"} />
+        <input {...register("country", { required: true })} placeholder={"País"} />
+        <input {...register("adress", { required: true })} placeholder={"Dirección"} />
+        <input {...register("zipCode", {
+          required: true, validate: {
+            number: (v) => parseInt(v) > 0
+          }
+        })} placeholder={"Código Postal"} />
+        <div className={styles.submitWrap}>
+          <input 
+            className={styles.submit} 
+            type="submit" 
+            value="ACEPTAR"/>
         </div>
       </form>
     </div>
