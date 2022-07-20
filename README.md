@@ -2,7 +2,7 @@
 
 Ecommerce "Palitos para Alanna"
 
-![](https://github.com/KassKerbal/react-class/tree/main/public/images/video.gif)
+![](https://github.com/KassKerbal/react-class/blob/main/public/images/video.gif)
 
 Un Ecommerce de artículos y productos de una tienda de mascotas dedicada especialmente a aves. De uso sencillo en el que se conecta a Firebase para gestionar la base de datos.
 
